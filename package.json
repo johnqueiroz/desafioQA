@@ -1,0 +1,13 @@
+{
+  "name": "desafioQA",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/johnqueiroz/desafioQA.git",
+  "author": "John Emerson <john.emerson@atlastechnol.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.56.0",
+    "@types/node": "^24.7.2"
+  },
+  "scripts": {}
+}
