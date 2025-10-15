@@ -1,11 +1,10 @@
 import { routes } from "../../utils/routes"
 
-export class ProductPage {
+export class ProductsPage {
     constructor(page){
         this.page = page
 
         this.productFilter = page.locator('[data-test="product-sort-container"]')
-        this.filterOption
     }
 
     async visit() {

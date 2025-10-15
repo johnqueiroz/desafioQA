@@ -20,9 +20,9 @@ test.describe('Fluxo de filtrar produtos', () => {
 
       for (const { filter, value } of filters) {
         test(`deve validar filtro de produtos - filtro ${filter}`, {
-        }, async ({ productPage }) => {
-          await productPage.sortFilter(value)
-          await expect(productPage.productFilter).toHaveValue(value)
+        }, async ({ productsPage }) => {
+          await productsPage.sortFilter(value)
+          await expect(productsPage.productFilter).toHaveValue(value)
         })
       }
 })
