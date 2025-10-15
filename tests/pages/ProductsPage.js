@@ -5,18 +5,34 @@ export class ProductsPage {
         this.page = page
 
         this.productFilter = page.locator('[data-test="product-sort-container"]')
+        this.productItem = page.locator('[data-test="item-0-title-link"]')
     }
 
+  /**
+   * Navega para a página de produtos
+   */
     async visit() {
-        await this.page.goto(routes.inventory)
+      await this.page.goto(routes.inventory)
     }
 
   /**
    * Ordena produtos por critério
    * @param {'az' | 'za' | 'lohi' | 'hilo'} sortType - Tipo de ordenação
-   * @returns {Promise<void>}
+   * - 'az': Nome (A para Z)
+   * - 'za': Nome (Z para A)
+   * - 'lohi': Preço (menor para maior)
+   * - 'hilo': Preço (maior para menor)
    */
   async sortFilter(sortType) {
     await this.productFilter.selectOption(sortType)
+  }
+
+  /**
+   * Retorna o locator de um produto específico pelo índice
+   * @param {number} index - Índice do produto (0-5)
+   * @returns {Locator} Locator do produto
+   */
+  async clickProduct(index) {
+    return this.page.locator(`[data-test="item-${index}-title-link"]`).click()
   }
 }
