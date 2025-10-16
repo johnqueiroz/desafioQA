@@ -53,7 +53,7 @@ Certifique-se de ter instalado:
 
 - **Node.js** v16 ou superior
 - **Yarn** v1.22 ou superior 
-- **Git** →
+- **Git**
 
 ### Verificar instalação:
 
