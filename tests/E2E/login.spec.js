@@ -34,4 +34,15 @@ test.describe('Fluxo de login', () => {
     await loginPage.doLogin(users.locked, 'secret_sauce')
     await expect(loginPage.lockedError).toContainText(dataErros.locked)
   })
+
+  /**
+  * Limpeza após cada teste
+  */
+  test.afterEach('Fazer logout da página do saucedemo', async ({ sideBar, page }) => {
+    const url = new URL(page.url())
+    if(!url.pathname.startsWith(routes.login)){
+      await sideBar.clickMenuItem('Logout')
+      await expect(page).toHaveURL(routes.login)
+    }
+  })
 })

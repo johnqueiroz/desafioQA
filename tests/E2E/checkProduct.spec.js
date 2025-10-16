@@ -25,5 +25,12 @@ test.describe('Validar produtos', () => {
             await expect(productItemPage.itemPrice).toHaveText(productsData[index].price)
         })
     }
+    /**
+   * Limpeza após cada teste
+   */
+   test.afterEach('Fazer logout da página do saucedemo', async ({ sideBar, page }) => {
+    await sideBar.clickMenuItem('Logout')
+    await expect(page).toHaveURL(routes.login)
+  })
 })
 

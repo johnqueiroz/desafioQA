@@ -18,12 +18,19 @@ test.describe('Fluxo de filtrar produtos', () => {
         { filter: 'Price High to Low', value: 'hilo' },
       ]
 
-      for (const { filter, value } of filters) {
-        test(`deve validar filtro de produtos - filtro ${filter}`, {
-        }, async ({ productsPage }) => {
-          await productsPage.sortFilter(value)
-          await expect(productsPage.productFilter).toHaveValue(value)
-        })
-      }
+    for (const { filter, value } of filters) {
+      test(`deve validar filtro de produtos - filtro ${filter}`, {
+      }, async ({ productsPage }) => {
+        await productsPage.sortFilter(value)
+        await expect(productsPage.productFilter).toHaveValue(value)
+      })
+    }
+   /**
+   * Limpeza após cada teste
+   */
+   test.afterEach('Fazer logout da página do saucedemo', async ({ sideBar, page }) => {
+    await sideBar.clickMenuItem('Logout')
+    await expect(page).toHaveURL(routes.login)
+  })
 })
 
