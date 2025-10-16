@@ -190,8 +190,6 @@ yarn playwright test --headed
 2. No arquivo de teste, clique com botão direito no ícone verde ▶️
 3. Selecione a opção desejada (Run Test, Debug Test, etc.)
 
-![Playwright Extension](https://playwright.dev/img/playwright-vscode.png)
-
 ### Visualizar relatório
 
 ```bash
