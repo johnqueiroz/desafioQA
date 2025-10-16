@@ -4,6 +4,9 @@ import { ProductsPage } from './pages/ProductsPage'
 import { ProductItemPage } from './pages/ProductItemPage'
 import { CartPage } from './pages/CartPage'
 import { SideBar } from './pages/Sidebar'
+import { CheckoutPage } from './pages/CheckoutPage'
+import { CheckoutFinishPage } from './pages/CheckoutFinishPage'
+import { CheckoutCompletePage } from './pages/CheckoutCompletePage'
 
 export const test = fixture.extend({
   loginPage: async ({ page }, use) => {
@@ -20,6 +23,15 @@ export const test = fixture.extend({
   },
   sideBar: async ({ page }, use) => {
     await use(new SideBar(page))
+  },
+  checkoutPage: async ({ page }, use) => {
+    await use(new CheckoutPage(page))
+  },
+  checkoutFinishPage: async ({ page }, use) => {
+    await use(new CheckoutFinishPage(page))
+  },
+  checkoutCompletePage: async ({ page }, use) => {
+    await use(new CheckoutCompletePage(page))
   },
 })
 export default test
