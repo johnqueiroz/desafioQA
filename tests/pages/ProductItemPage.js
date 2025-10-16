@@ -13,6 +13,14 @@ export class ProductItemPage {
     this.cartBadge = page.locator('[data-test="shopping-cart-badge"]')
   }
 
+  /**
+   * Adiciona o produto ao carrinho e verifica se a ação foi bem-sucedida.
+   * Valida que o botão "Remover" aparece e o badge do carrinho mostra "1".
+   * @async
+   * @throws {Error} Se o botão "Remover" não ficar visível ou o badge não mostrar "1"
+   * @example
+   * await productItemPage.addProductToCart()
+   */
   async addProductToCart() {
     await this.addCart.click()
     await expect(this.removeFromCart).toBeVisible()

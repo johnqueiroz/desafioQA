@@ -14,6 +14,10 @@ test.beforeEach(
 )
 
 test.describe('Validar produtos', () => {
+  /**
+   * Testes parametrizados que validam informações de cada produto disponível.
+   * Itera pelos 6 produtos e verifica nome, descrição, preço e URL.
+   */
   for (let index = 0; index < 6; index++) {
     test(
       `deve validar informações do produto - ${index}`,
@@ -38,7 +42,8 @@ test.describe('Validar produtos', () => {
     )
   }
   /**
-   * Limpeza após cada teste
+   * Hook executado após cada teste.
+   * Realiza logout e valida redirecionamento para a página de login.
    */
   test.afterEach(
     'Fazer logout da página do saucedemo',

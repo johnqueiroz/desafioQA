@@ -17,7 +17,13 @@ export class CartPage {
   }
 
   /**
-   *
+   * Valida as informações de um produto no carrinho.
+   * Verifica se o nome, descrição e preço correspondem aos dados esperados.
+   * @async
+   * @param {number} index - Índice do produto no array productsData para comparação
+   * @throws {Error} Se alguma informação do produto não corresponder aos dados esperados
+   * @example
+   * await cartPage.validateCart(0)
    */
   async validateCart(index) {
     await expect(this.itemName(index)).toHaveText(productsData[index].title)

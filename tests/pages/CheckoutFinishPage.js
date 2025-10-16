@@ -1,11 +1,19 @@
 import { expect } from '@playwright/test'
 import { productsData } from '../../utils/products'
 
+/**
+ * Dados estáticos de pagamento e entrega exibidos na página de revisão.
+ * @constant
+ */
 const data = {
   payment: 'SauceCard #31337',
   shipping: 'Free Pony Express Delivery!',
 }
 
+/**
+ * Classe que representa a página de revisão final do checkout.
+ * Fornece métodos para validar informações do produto, pagamento, entrega e valores totais.
+ */
 export class CheckoutFinishPage {
   constructor(page) {
     this.page = page
@@ -23,6 +31,15 @@ export class CheckoutFinishPage {
     this.finishButton = page.locator('[data-test="finish"]')
   }
 
+  /**
+   * Valida todas as informações exibidas na página de revisão do checkout.
+   * Verifica dados do produto, quantidade, pagamento, entrega, impostos e total.
+   * @async
+   * @param {number} index - Índice do produto no array productsData para comparação
+   * @throws {Error} Se alguma informação não corresponder aos dados esperados
+   * @example
+   * await checkoutFinishPage.checkCheckoutInformation(0)
+   */
   async checkCheckoutInformation(index) {
     await expect(this.itemQuantity).toHaveText('1')
     await expect(this.itemName(index)).toHaveText(productsData[index].title)

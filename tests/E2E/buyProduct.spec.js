@@ -14,6 +14,10 @@ test.beforeEach(
 )
 
 test.describe('Validar produtos', () => {
+  /**
+   * Testes parametrizados que executam o fluxo completo de compra para cada produto.
+   * Itera pelos 6 produtos disponíveis e valida todas as etapas do checkout.
+   */
   for (let index = 0; index < 6; index++) {
     test(
       `deve adicionar produto ao carrinho e efetuar compra - ${index}`,
@@ -27,6 +31,10 @@ test.describe('Validar produtos', () => {
         productsPage,
         page,
       }) => {
+        /**
+         * Etapa 1: Acessa a página do produto e adiciona ao carrinho.
+         * Valida a URL do produto e a adição ao carrinho.
+         */
         await test.step(`acessar página do produto e adicionar ao carrinho`, async () => {
           await productsPage.clickProduct(index)
           await expect(page).toHaveURL(routes.product(index))
@@ -37,6 +45,10 @@ test.describe('Validar produtos', () => {
           await expect(page).toHaveURL(routes.cart)
         })
 
+        /**
+         * Etapa 2: Valida o carrinho e prossegue para o checkout.
+         * Verifica as informações do produto no carrinho.
+         */
         await test.step(`validar carrinho e seguir para checkout`, async () => {
           await expect(cartPage.cartTile).toHaveText('Your Cart')
 
@@ -45,6 +57,10 @@ test.describe('Validar produtos', () => {
           await expect(page).toHaveURL(routes.checkout)
         })
 
+        /**
+         * Etapa 3: Preenche as informações do usuário no checkout.
+         * Utiliza dados gerados aleatoriamente via Faker.
+         */
         await test.step(`Enviar informações`, async () => {
           await expect(checkoutPage.checkoutTitle).toHaveText(
             'Checkout: Your Information',
@@ -57,6 +73,10 @@ test.describe('Validar produtos', () => {
           )
         })
 
+        /**
+         * Etapa 4: Valida as informações do pedido e confirma a compra.
+         * Verifica todos os detalhes do produto, preços e impostos.
+         */
         await test.step(`Validar infos do produto e confirmar compra`, async () => {
           await expect(page).toHaveURL(routes.checkoutFinish)
           await expect(checkoutFinishPage.checkoutFinishTitle).toHaveText(
@@ -66,6 +86,10 @@ test.describe('Validar produtos', () => {
           await checkoutFinishPage.finishButton.click()
         })
 
+        /**
+         * Etapa 5: Valida a conclusão do checkout.
+         * Verifica que a página de confirmação é exibida corretamente.
+         */
         await test.step(`Checkout completo`, async () => {
           await expect(page).toHaveURL(routes.checkoutComplete)
           await expect(checkoutCompletePage.checkoutCompletedTitle).toHaveText(
@@ -77,7 +101,8 @@ test.describe('Validar produtos', () => {
     )
   }
   /**
-   * Limpeza após cada teste
+   * Hook executado após cada teste.
+   * Realiza logout e valida redirecionamento para a página de login.
    */
   test.afterEach(
     'Fazer logout da página do saucedemo',

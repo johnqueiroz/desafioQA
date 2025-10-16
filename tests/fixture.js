@@ -8,6 +8,18 @@ import { CheckoutPage } from './pages/CheckoutPage'
 import { CheckoutFinishPage } from './pages/CheckoutFinishPage'
 import { CheckoutCompletePage } from './pages/CheckoutCompletePage'
 
+/**
+ *
+ * @example
+ * import { test } from './fixtures'
+ *
+ * test('deve fazer login com sucesso', async ({ loginPage, productsPage }) => {
+ *   await loginPage.navigate()
+ *   await loginPage.login('user', 'password')
+ *   await productsPage.expectToBeVisible()
+ * })
+ */
+
 export const test = fixture.extend({
   loginPage: async ({ page }, use) => {
     await use(new LoginPage(page))
