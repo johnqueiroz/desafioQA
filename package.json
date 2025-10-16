@@ -3,11 +3,27 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/johnqueiroz/desafioQA.git",
-  "author": "John Emerson <john.emerson@atlastechnol.com>",
+  "author": "John Emerson <johnemerson67@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@eslint/js": "^9.37.0",
     "@playwright/test": "^1.56.0",
-    "@types/node": "^24.7.2"
+    "@types/node": "^24.7.2",
+    "eslint": "^9.37.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-playwright": "^2.2.2",
+    "eslint-plugin-prettier": "^5.5.4",
+    "globals": "^16.4.0",
+    "prettier": "^3.6.2"
   },
-  "scripts": {}
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report"
+  }
 }

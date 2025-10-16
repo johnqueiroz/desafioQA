@@ -1,18 +1,18 @@
-import { routes } from "../../utils/routes"
+import { routes } from '../../utils/routes'
 
 export class ProductsPage {
-    constructor(page){
-        this.page = page
+  constructor(page) {
+    this.page = page
 
-        this.productFilter = page.locator('[data-test="product-sort-container"]')
-    }
+    this.productFilter = page.locator('[data-test="product-sort-container"]')
+  }
 
   /**
    * Navega para a página de produtos
    */
-    async visit() {
-      await this.page.goto(routes.inventory)
-    }
+  async visit() {
+    await this.page.goto(routes.inventory)
+  }
 
   /**
    * Ordena produtos por critério
