@@ -5,7 +5,6 @@ export class ProductsPage {
         this.page = page
 
         this.productFilter = page.locator('[data-test="product-sort-container"]')
-        this.productItem = page.locator('[data-test="item-0-title-link"]')
     }
 
   /**
